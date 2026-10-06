@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>elite://newtab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="/uv/uv.bundle.js"></script>
+<script src="/uv/uv.config.js"></script>
+<script src="/baremux/index.js"></script>
+<link rel="stylesheet" href="elite.css">
+</head>
+<body data-theme="frutiger">
+
+<div class="sidebar">
+  <div class="sidebar-btn active" id="nav-home" title="Home Proxy">
+    <img src="https://raw.githubusercontent.com/xxuep/xxuep-icons/main/house.png" style="filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));" width="30" height="30" alt="Home" />
+  </div>
+  <div class="sidebar-btn" id="nav-page2" title="Grid 1">
+    <img src="https://raw.githubusercontent.com/xxuep/xxuep-icons/main/games.png" style="filter:  drop-shadow(0px 1px 2px rgba(0,0,0,0.5));" width="30" height="30" alt="Grid 1" />
+  </div>
+  <div class="sidebar-btn" id="nav-page3" title="Grid 2">
+    <img src="https://raw.githubusercontent.com/xxuep/xxuep-icons/main/movies.png" style="filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));" width="30" height="30" alt="Grid 2" />
+  </div>
+  <div class="sidebar-btn" id="nav-settings" title="Settings">
+    <img src="https://raw.githubusercontent.com/xxuep/xxuep-icons/main/gear.png" style="filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));" width="30" height="30" alt="Settings" />
+  </div>
+  <div class="sidebar-btn" id="nav-credits" title="Credits">
+    <img src="https://raw.githubusercontent.com/xxuep/xxuep-icons/main/information.png" style="filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));" width="40" height="40" alt="Credits" />
+  </div>
+</div>
+
+<div id="videoOverlay" class="video-overlay">
+  <div class="video-shell">
+    <div class="video-topbar">
+      <div id="videoTitle" class="video-title">Video</div>
+      <button id="videoBack" class="video-btn">Back</button>
+      <button id="videoClose" class="video-btn">✕</button>
+    </div>
+    <iframe
+      id="videoFrame"
+      class="video-frame"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+<div id="page2" class="page-container">
+  <h2>games</h2>
+  <div class="grid" id="grid1-container"></div>
+</div>
+
+<div id="page3" class="page-container">
+  <h2>movies</h2>
+  <div class="grid" id="grid2-container"></div>
+</div>
+
+<div id="settings-page" class="page-container">
+  <h2>settings</h2>
+  <div class="settings-group">
+    <label for="searchEngineSelect">Default Search Engine</label>
+    <select id="searchEngineSelect">
+      <option value="google">Google</option>
+      <option value="duckduckgo">DuckDuckGo</option>
+      <option value="brave">Brave</option>
+      <option value="yahoo">Yahoo</option>
+      <option value="bing">Bing</option>
+    </select>
+  </div>
+  
+  <div class="settings-group" style="margin-top: 20px;">
+    <label for="themeSelect">Proxy Theme</label>
+    <select id="themeSelect">
+      <option value="frutiger">Frutiger Aero (Default)</option>
+      <option value="custom">Colored</option>
+      <option value="verity">Verity</option>
+      <option value="purple">Lofi Theme</option>
+      <option value="cyberpunk">Opera GX typa shi Neon</option>
+      <option value="mocha">Cozy Mocha</option>
+      <option value="hacker">Terminalr</option>
+    </select>
+    <input type="color" id="customColorPicker" value="#005a9e" style="display:none; margin-top:15px; width:100%; height:40px; cursor:pointer;" title="Choose your custom theme color">
+  </div>
+</div>
+
+<div id="credits-page" class="page-container">
+  <div class="anim-frames"></div>
+  <h1>creds</h1>
+  <h2>owner</h2>
+  <p>elite was created by dillybob. this was supposed to be a scuffed version of opera then turning into what u see today.</p>
+  <h3>what does it use</h3>
+  <p>the browser system is ultraviolet, by titaniumnetwork.</p>
+</div>
+
+<div class="tabs" id="tabsBar">
+  <div class="new-tab-btn" id="tabsNewBtn" title="New tab">＋</div>
+</div>
+
+<div class="chrome" id="chromeBar">
+  <div id="compat-warning" class="compat-warning" style="display: none;">
+  proxy may not be compatible with your instance.
+  </div>
+  <div class="btn" id="backBtn" title="Go Back">
+    <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/arrow-left.svg" style="filter: var(--icon-filter);" width="20" height="20" alt="Back" />
+  </div>
+  <div class="btn" id="forwardBtn" title="Go Forward">
+    <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/arrow-right.svg" style="filter: var(--icon-filter);" width="20" height="20" alt="Forward" />
+  </div>
+  <div class="btn" id="newTabBtn" title="New Tab">
+    <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/plus.svg" style="filter: var(--icon-filter);" width="20" height="20" alt="New Tab" />
+  </div>
+  <div class="btn" id="closeBtn" title="Close Tab">
+    <img src="https://raw.githubusercontent.com/feathericons/feather/master/icons/x.svg" style="filter: var(--icon-filter);" width="20" height="20" alt="Close Tab" />
+  </div>
+  <div class="address" id="address">elite://newtab</div>
+  <div class="btn" id="extensionsBtn" title="Extensions">
+    <span>🍅</span>
+  </div>
+</div>
+
+<!-- <div id="extensions-panel" class="extensions-panel hidden">
+  <div class="ext-header">
+    <h3>Extensions</h3>
+    <div>
+      <span id="ext-reset" class="ext-action" title="Reset Objects">🔄</span>
+      <span id="ext-close" class="ext-action" title="Close Panel">✕</span>
+    </div>
+  </div>
+  <div class="ext-items">
+    <div class="ext-item" id="ext-tomato">🍅 Tomato</div>
+    <div class="ext-item" id="ext-axe">🪓 Axe</div>
+    <div class="ext-item" id="ext-bottle">🍾 Bottle</div>
+
+    <div class="ext-item" id="ext-oneko" style="display: flex; align-items: center; gap: 8px;">
+      <img src="https://raw.githubusercontent.com/adryd325/oneko.js/main/oneko.gif" style="width: 16px; height: 16px; object-fit: contain; image-rendering: pixelated;" alt="Oneko Cat Icon">
+      Oneko Cat
+    </div>
+  </div>
+</div> -->
+
+<div class="newtab" id="newtab">
+  <h1>elite</h1>
+  <input id="search" placeholder="Proxy may not work for your runner." />
+  <div class="shortcuts" id="shortcuts"></div>
+</div>
+
+<div id="iframe-loading-bg"></div>
+<div id="throwables-layer"></div>
+<iframe id="viewer"></iframe>
+
+<script src="elite.js"></script>
+
+</body>
+</html>
